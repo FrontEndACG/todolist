@@ -21,6 +21,8 @@ function onAddTodo() {
 	}
 	todoInput.value = '';
 	addTodoBtn.setAttribute('disabled', true);
+
+	updateNoOfTodos();
 }
 
 function createTodoLi(text) {
@@ -40,4 +42,10 @@ function createTodoLi(text) {
 	todoLi.appendChild(deleteTodoBtn);
 
 	return todoLi;
+}
+
+function updateNoOfTodos() {
+	const noOfTodoContainer = document.getElementById('no-of-todos');
+	const noOfTodos = todoList.querySelectorAll('li').length;
+	noOfTodoContainer.innerHTML = noOfTodos + ' todos';
 }

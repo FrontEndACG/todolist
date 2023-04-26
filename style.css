@@ -72,3 +72,8 @@ li button {
 	border-radius: 3px;
 	cursor: pointer;
 }
+
+#no-of-todos {
+	background-color: #4caf50;
+	color: white;
+}
