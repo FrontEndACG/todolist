@@ -15,12 +15,20 @@ function onInputTodo(event) {
 
 function onAddTodo() {
 	const todoLi = createTodoLi(todoInput.value);
-	todoList.appendChild(todoLi);
+
+	if (todoLi) {
+		todoList.appendChild(todoLi);
+	}
 	todoInput.value = '';
 	addTodoBtn.setAttribute('disabled', true);
 }
 
 function createTodoLi(text) {
+	if (text.trim().length === 0) {
+		alert('Introduceti un task valid!');
+		return;
+	}
+
 	const todoLi = document.createElement('li');
 	const todoTextSpan = document.createElement('span');
 	const deleteTodoBtn = document.createElement('button');
