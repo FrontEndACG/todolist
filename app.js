@@ -1,9 +1,11 @@
 const todoInput = document.getElementById('todo-input');
 const addTodoBtn = document.getElementById('add-btn');
 const todoList = document.getElementById('todo-list');
+const deleteAllTodosBtn = document.getElementById('delete-all-todos');
 
 todoInput.addEventListener('input', onInputTodo);
 addTodoBtn.addEventListener('click', onAddTodo);
+deleteAllTodosBtn.addEventListener('click', onDeleteAll);
 
 function onInputTodo(event) {
 	if (event.target.value.length > 0) {
@@ -38,14 +40,28 @@ function createTodoLi(text) {
 	todoTextSpan.innerHTML = text;
 	deleteTodoBtn.innerHTML = 'X';
 
+	deleteTodoBtn.addEventListener('click', function (e) {
+		e.target.parentNode.remove();
+		updateNoOfTodos();
+	});
+
 	todoLi.appendChild(todoTextSpan);
 	todoLi.appendChild(deleteTodoBtn);
 
 	return todoLi;
 }
 
+function onDeleteAll() {
+	console.log('test');
+	const allTodos = todoList.querySelectorAll('li');
+	console.log(allTodos);
+	allTodos.forEach((todoLi) => todoLi.remove());
+	updateNoOfTodos();
+}
+
 function updateNoOfTodos() {
 	const noOfTodoContainer = document.getElementById('no-of-todos');
 	const noOfTodos = todoList.querySelectorAll('li').length;
-	noOfTodoContainer.innerHTML = noOfTodos + ' todos';
+	noOfTodoContainer.innerHTML =
+		noOfTodos + ' ' + (noOfTodos == 1 ? 'todo' : ' todos');
 }

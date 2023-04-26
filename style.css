@@ -76,4 +76,14 @@ li button {
 #no-of-todos {
 	background-color: #4caf50;
 	color: white;
+	display: inline-block;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#delete-all-todos {
+	background-color: #f44336;
+	border-radius: 5px;
+	display: block;
+	margin-top: 10px;
 }
